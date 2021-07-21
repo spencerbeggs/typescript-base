@@ -1,0 +1,13 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"type": "pwa-node",
+			"request": "launch",
+			"name": "Run Program",
+			"skipFiles": ["<node_internals>/**"],
+			"runtimeArgs": ["--no-warnings", "--loader", "@k-foss/ts-esnode", "--experimental-specifier-resolution=node"],
+			"args": ["${workspaceFolder}/index.ts"]
+		}
+	]
+}

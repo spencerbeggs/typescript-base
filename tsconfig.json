@@ -1,0 +1,11 @@
+{
+	"extends": "@tsconfig/node16/tsconfig.json",
+	"root": true,
+	"compilerOptions": {
+		"module": "esnext",
+		"resolveJsonModule": true,
+		"esModuleInterop": true,
+		"moduleResolution": "node",
+		"baseUrl": "."
+	}
+}

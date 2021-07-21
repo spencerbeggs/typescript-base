@@ -1,0 +1,47 @@
+{
+	"name": "typescript-base",
+	"version": "1.0.0",
+	"description": "Just a little boilerplate for setting up Typescript projects the way I like them.",
+	"repository": "https://github.com/spencerbeggs/typescript-base.git",
+	"author": "C. Spencer Beggs <spencer@beg.gs>",
+	"license": "MIT",
+	"private": true,
+	"type": "module",
+	"engineStrict": true,
+	"engines": {
+		"node": "16.4.1"
+	},
+	"scripts": {
+		"engines": "node --no-warnings --loader @k-foss/ts-esnode --experimental-specifier-resolution=node ./lib/scripts/engines.ts",
+		"postinstall": "npm run engines",
+		"lint": "eslint .",
+		"start": "node --no-warnings --loader @k-foss/ts-esnode --experimental-specifier-resolution=node index.ts",
+		"test": "jest",
+		"travis": "jest --coverage --coverageReporters=text-lcov | coveralls"
+	},
+	"devDependencies": {
+		"@k-foss/ts-esnode": "^2.0.2",
+		"@tsconfig/node16": "^1.0.2",
+		"@types/fs-extra": "^9.0.12",
+		"@types/jest": "^26.0.24",
+		"@types/node": "^16.4.0",
+		"@types/semver": "^7.3.7",
+		"@typescript-eslint/eslint-plugin": "^4.28.4",
+		"@typescript-eslint/parser": "^4.28.4",
+		"coveralls": "^3.1.1",
+		"eslint": "^7.31.0",
+		"eslint-config-prettier": "^8.3.0",
+		"eslint-plugin-import": "^2.23.4",
+		"eslint-plugin-prettier": "^3.4.0",
+		"jest": "^27.0.6",
+		"jest-console": "^0.1.0",
+		"prettier": "^2.3.2",
+		"semver": "^7.3.5",
+		"ts-jest": "^27.0.4",
+		"ts-node": "^10.1.0",
+		"tsconfig-paths": "^3.10.1",
+		"type-fest": "^1.2.2",
+		"typescript": "^4.3.5"
+	},
+	"dependencies": {}
+}
