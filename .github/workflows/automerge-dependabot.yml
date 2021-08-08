@@ -19,6 +19,6 @@ jobs:
       - name: test
         run: yarn test-automerge
       - name: merge
+        uses: .github/actions/automerge.js
         with:
           PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-        run: node --no-warnings --loader @k-foss/ts-esnode --experimental-specifier-resolution=node .github/actions/automerge.ts

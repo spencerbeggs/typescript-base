@@ -6,7 +6,7 @@ const token = getInput("PERSONAL_ACCESS_TOKEN");
 const octokit = new Octokit({ auth: token });
 const repo = context.repo;
 
-async function merge(source: string, target: string) {
+async function merge(source, target) {
 	info(`merge branch:${source} to: ${target}`);
 	await octokit.repos.merge({
 		owner: repo.owner,
