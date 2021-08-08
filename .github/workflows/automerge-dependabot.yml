@@ -21,7 +21,7 @@ jobs:
       - name: approve
         uses: cognitedata/auto-approve-dependabot-action@v3.0.1
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
       - name: merge
         run: node --no-warnings --loader @k-foss/ts-esnode --experimental-specifier-resolution=node .github/actions/automerge.ts
         env:
