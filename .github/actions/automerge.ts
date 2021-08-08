@@ -2,7 +2,7 @@ import { getInput, info, setFailed } from "@actions/core";
 import { context } from "@actions/github";
 import { Octokit } from "@octokit/rest";
 
-const token = getInput("github_token");
+const token = getInput("GITHUB_TOKEN");
 const octokit = new Octokit({ auth: token });
 const repo = context.repo;
 

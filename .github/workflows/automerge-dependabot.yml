@@ -20,5 +20,3 @@ jobs:
         run: yarn test-automerge
       - name: merge
         run: node --no-warnings --loader @k-foss/ts-esnode --experimental-specifier-resolution=node .github/actions/dependabot/automerge.ts
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
