@@ -1,0 +1,22 @@
+name: Automerge Dependabot pull requests
+on:
+  pull_request:
+    branches:
+      - develop
+jobs:
+  lint-test-merge:
+    runs-on: ubuntu-latest
+    if: ${{ github.actor == 'dependabot[bot]' }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 16.4.1
+      - name: install dependencies
+        run: yarn install --production=false
+      - name: lint
+        run: yarn lint
+      - name: test
+        run: yarn test-automerge
+      - name: merge
+        run: node --no-warnings --loader @k-foss/ts-esnode --experimental-specifier-resolution=node .github/actions/dependabot/automerge.ts
