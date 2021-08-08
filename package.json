@@ -17,10 +17,14 @@
 		"lint": "eslint .",
 		"start": "node --no-warnings --loader @k-foss/ts-esnode --experimental-specifier-resolution=node index.ts",
 		"test": "jest",
+		"test-automerge": "TEST_ENV=automerge jest --ci",
 		"travis": "jest --coverage --coverageReporters=text-lcov | coveralls"
 	},
 	"devDependencies": {
+		"@actions/core": "^1.4.0",
+		"@actions/github": "^5.0.0",
 		"@k-foss/ts-esnode": "^2.0.2",
+		"@octokit/rest": "^18.9.0",
 		"@tsconfig/node16": "^1.0.2",
 		"@types/fs-extra": "^9.0.12",
 		"@types/jest": "^26.0.24",
