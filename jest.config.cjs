@@ -8,5 +8,17 @@ module.exports = {
 	transform: {
 		"^.+\\.tsx?$": "ts-jest"
 	},
-	collectCoverage: true
+	collectCoverage: true,
+	coverageReporters: ["json", "text"],
+	coverageThreshold:
+		process.env.TEST_ENV === "automerge"
+			? {
+					global: {
+						branches: 100,
+						functions: 100,
+						lines: 100,
+						statements: 100
+					}
+			  }
+			: undefined
 };
