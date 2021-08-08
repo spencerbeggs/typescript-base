@@ -12,17 +12,14 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: 16.4.1
+          cache: "yarn"
       - name: install dependencies
         run: yarn install --production=false
       - name: lint
         run: yarn lint
       - name: test
         run: yarn test-automerge
-      - name: approve
-        uses: cognitedata/auto-approve-dependabot-action@v3.0.1
-        with:
-          github-token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
       - name: merge
-        run: node --no-warnings --loader @k-foss/ts-esnode --experimental-specifier-resolution=node .github/actions/automerge.ts
-        env:
-          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+        uses: fastify/github-action-merge-dependabot@v2.1.1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
