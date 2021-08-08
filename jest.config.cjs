@@ -11,7 +11,7 @@ module.exports = {
 	collectCoverage: true,
 	coverageReporters: ["json", "text"],
 	coverageThreshold:
-		process.env.TEST_ENV === "automerge"
+		process.env.TEST_ENV === "ci"
 			? {
 					global: {
 						branches: 100,

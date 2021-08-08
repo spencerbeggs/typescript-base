@@ -9,7 +9,7 @@
 	"type": "module",
 	"engineStrict": true,
 	"engines": {
-		"node": "16.4.1"
+		"node": "16.6.1"
 	},
 	"scripts": {
 		"engines": "node --no-warnings --loader @k-foss/ts-esnode --experimental-specifier-resolution=node ./lib/scripts/engines.ts",
@@ -17,12 +17,10 @@
 		"lint": "eslint .",
 		"start": "node --no-warnings --loader @k-foss/ts-esnode --experimental-specifier-resolution=node index.ts",
 		"test": "jest",
-		"test-automerge": "TEST_ENV=automerge jest --ci",
+		"test-ci": "TEST_ENV=ci jest --ci",
 		"travis": "jest --coverage --coverageReporters=text-lcov | coveralls"
 	},
 	"devDependencies": {
-		"@actions/core": "^1.4.0",
-		"@actions/github": "^5.0.0",
 		"@k-foss/ts-esnode": "^2.0.2",
 		"@octokit/action": "^3.14.1",
 		"@octokit/rest": "^18.9.0",
