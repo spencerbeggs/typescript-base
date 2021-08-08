@@ -9,7 +9,7 @@
 	"type": "module",
 	"engineStrict": true,
 	"engines": {
-		"node": "16.4.1"
+		"node": "16.6.1"
 	},
 	"scripts": {
 		"engines": "node --no-warnings --loader @k-foss/ts-esnode --experimental-specifier-resolution=node ./lib/scripts/engines.ts",
