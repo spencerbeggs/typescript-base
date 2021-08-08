@@ -17,7 +17,7 @@
 		"lint": "eslint .",
 		"start": "node --no-warnings --loader @k-foss/ts-esnode --experimental-specifier-resolution=node index.ts",
 		"test": "jest",
-		"test-automerge": "TEST_ENV=automerge jest --ci",
+		"test-ci": "TEST_ENV=ci jest --ci",
 		"travis": "jest --coverage --coverageReporters=text-lcov | coveralls"
 	},
 	"devDependencies": {
