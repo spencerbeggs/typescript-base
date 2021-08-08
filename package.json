@@ -24,6 +24,7 @@
 		"@actions/core": "^1.4.0",
 		"@actions/github": "^5.0.0",
 		"@k-foss/ts-esnode": "^2.0.2",
+		"@octokit/action": "^3.14.1",
 		"@octokit/rest": "^18.9.0",
 		"@tsconfig/node16": "^1.0.2",
 		"@types/fs-extra": "^9.0.12",
