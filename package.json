@@ -14,7 +14,8 @@
 	"scripts": {
 		"engines": "node --no-warnings --loader @k-foss/ts-esnode --experimental-specifier-resolution=node ./lib/scripts/engines.ts",
 		"postinstall": "npm run engines",
-		"lint": "eslint .",
+		"lint": "eslint . --ext .ts,.cjs,.js",
+		"lint-fix": "eslint . --ext .ts,.cjs,.js --fix",
 		"start": "node --no-warnings --loader @k-foss/ts-esnode --experimental-specifier-resolution=node index.ts",
 		"test": "jest",
 		"test-ci": "TEST_ENV=ci jest --ci",
