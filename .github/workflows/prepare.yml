@@ -7,7 +7,7 @@ on:
 jobs:
   init:
     name: Initialize
-    if: github.created
+    if: github.event.created
     runs-on: ubuntu-latest
     outputs:
       commit: ${{ steps.bump.outputs.commit }}
