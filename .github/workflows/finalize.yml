@@ -1,0 +1,92 @@
+name: "Finalize release"
+on:
+  push:
+    branches:
+      - main
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Inject env variables
+        uses: rlespinasse/github-slug-action@v3.x
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 16.6.1
+          cache: "yarn"
+      - id: package
+        run: echo ::set-output name=version::$(jq -r ".version" package.json)
+      - name: Check for release tag
+        id: tag
+        uses: octokit/graphql-action@v2.2.20
+        env:
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+        with:
+          query: |
+            query GetBetaTag($repo: String!, $owner:String!, $tag_name: String!) {
+              repository(name: $repo, owner: $owner) {
+                ref(qualifiedName: $tag_name) {
+                  id
+                  target {
+                    oid
+                  }
+                }
+              }
+            }
+          owner: ${{ env.GITHUB_REPOSITORY_OWNER_PART }}
+          repo: ${{ env.GITHUB_REPOSITORY_NAME_PART }}
+          tag_name: ${{ steps.package.outputs.version }}
+      - name: Set release tag meta
+        id: release_tag
+        run: |
+          echo ::set-output name=id::$( echo '${{ steps.tag.outputs.data }}' | jq '.repository.ref?.id | select (.!=null)')
+          echo ::set-output name=target::$( echo '${{ steps.tag.outputs.data }}' | jq '.repository.ref?.target?.oid | select (.!=null)')
+      - name: Check for beta tag
+        id: beta
+        uses: octokit/graphql-action@v2.2.20
+        env:
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+        with:
+          query: |
+            query GetBetaTag($repo: String!, $owner:String!, $tag_name: String!) {
+              repository(name: $repo, owner: $owner) {
+                ref(qualifiedName: $tag_name) {
+                  id
+                  target {
+                    oid
+                  }
+                }
+              }
+            }
+          owner: ${{ env.GITHUB_REPOSITORY_OWNER_PART }}
+          repo: ${{ env.GITHUB_REPOSITORY_NAME_PART }}
+          tag_name: "${{ steps.package.outputs.version }}-beta"
+      - name: Set beta tag meta
+        id: beta_tag
+        run: |
+          echo ::set-output name=id::$( echo '${{ steps.beta.outputs.data }}' | jq '.repository.ref?.id | select (.!=null)')
+          echo ::set-output name=target::$( echo '${{ steps.beta.outputs.data }}' | jq '.repository.ref?.target?.oid | select (.!=null)')
+      - name: Delete beta tag
+        uses: octokit/graphql-action@v2.2.20
+        if: steps.beta_tag.outputs.id
+        env:
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+        with:
+          query: |
+            mutation DeleteBetaTag($tagId: String!) {
+              deleteRef(input: {refId: $tagId}) {
+                clientMutationId
+              }
+            }
+          tagId: ${{ steps.beta_tag.outputs.id }}
+      - name: Create release
+        id: create_release
+        if: steps.release_tag.outputs.id == null
+        uses: softprops/action-gh-release@v1
+        with:
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          name: v${{ steps.package.outputs.version }}
+          tag_name: ${{ steps.package.outputs.version }}
+          draft: false
+          target_commitish: ${{ github.ref }}
