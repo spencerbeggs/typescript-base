@@ -4,9 +4,9 @@
 		{
 			"type": "pwa-node",
 			"request": "launch",
-			"name": "Run Program",
+			"name": "Start",
 			"skipFiles": ["<node_internals>/**"],
-			"runtimeArgs": ["--no-warnings", "--loader", "@k-foss/ts-esnode", "--experimental-specifier-resolution=node"],
+			"runtimeArgs": ["--no-warnings", "--loader", "ts-node/esm", "--experimental-specifier-resolution=node"],
 			"args": ["${workspaceFolder}/index.ts"]
 		}
 	]

@@ -2,10 +2,12 @@
 	"extends": "@tsconfig/node16/tsconfig.json",
 	"root": true,
 	"compilerOptions": {
-		"module": "esnext",
-		"resolveJsonModule": true,
+		"module": "es2022",
 		"esModuleInterop": true,
 		"moduleResolution": "node",
 		"baseUrl": "."
+	},
+	"ts-node": {
+		"require": ["tsconfig-paths/register"]
 	}
 }
