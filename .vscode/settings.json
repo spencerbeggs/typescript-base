@@ -19,7 +19,7 @@
 		"source.addMissingImports": true
 	},
 	"eslint.options": {
-		"configFile": ".eslintrc"
+		"overrideConfigFile": ".eslintrc"
 	},
 	"prettier.enable": true,
 	"prettier.configPath": ".prettierrc",
