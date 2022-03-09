@@ -9,5 +9,6 @@
 	},
 	"ts-node": {
 		"require": ["tsconfig-paths/register"]
-	}
+	},
+	"typeRoots": ["./node_modules/@types", "./types"]
 }
