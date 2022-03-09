@@ -1,6 +1,6 @@
 {
 	"name": "typescript-base",
-	"version": "1.4.1",
+	"version": "1.5.0",
 	"description": "Just a little boilerplate for setting up Typescript projects the way I like them.",
 	"repository": "https://github.com/spencerbeggs/typescript-base.git",
 	"author": "C. Spencer Beggs <spencer@beg.gs>",
