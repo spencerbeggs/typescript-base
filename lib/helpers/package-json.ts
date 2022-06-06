@@ -1,5 +1,4 @@
 import { readFile } from "fs/promises";
-import { URL } from "url";
 import type { PackageJson } from "type-fest";
 
 export const getPackageJson = async (): Promise<PackageJson> => {

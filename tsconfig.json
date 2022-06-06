@@ -1,14 +1,27 @@
 {
-	"extends": "@tsconfig/node16/tsconfig.json",
-	"root": true,
 	"compilerOptions": {
-		"module": "es2022",
+		"module": "ES2022",
+		"target": "ESNext",
 		"esModuleInterop": true,
 		"moduleResolution": "node",
-		"baseUrl": "."
+		"isolatedModules": true,
+		"baseUrl": ".",
+		"rootDir": ".",
+		"declaration": true,
+		"allowJs": true,
+		"declarationMap": false,
+		"noEmit": true,
+		"outDir": "./dist",
+		"typeRoots": ["./node_modules/@types", "./types"],
+		"paths": {}
 	},
+	"include": ["**/*.ts"],
+	"exclude": ["node_modules", "dist", ".yarn", ".vscode", ".github"],
 	"ts-node": {
-		"require": ["tsconfig-paths/register"]
-	},
-	"typeRoots": ["./node_modules/@types", "./types"]
+		"require": ["typescript-transform-paths/register"],
+		"transpileOnly": true,
+		"moduleTypes": {
+			"jest.config.ts": "cjs"
+		}
+	}
 }
