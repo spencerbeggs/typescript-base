@@ -16,7 +16,7 @@ jobs:
       release_name: ${{ steps.meta.outputs.release_name }}
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Get metadata
         id: meta
         run: |
