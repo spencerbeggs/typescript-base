@@ -15,6 +15,6 @@ jobs:
           node-version: 18.1.0
           cache: "yarn"
       - run: corepack enable yarn && yarn set version ./.yarn/releases/yarn-3.2.1.cjs
-      - run: yarn install --production=false
+      - run: yarn install
       - run: yarn lint
       - run: yarn test

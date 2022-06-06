@@ -15,7 +15,7 @@ jobs:
           cache: "yarn"
       - run: corepack enable yarn && yarn set version ./.yarn/releases/yarn-3.2.1.cjs
       - name: install dependencies
-        run: yarn install --production=false
+        run: yarn install
       - name: lint
         run: yarn lint
       - name: test
