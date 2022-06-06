@@ -14,8 +14,6 @@ obj
 !.yarn/sdks
 !.yarn/versions
 .pnp.*
-tsconfig.tsbuildinfo
-gh-pages
-gh-pages.pub
+**/node_modules
 **/ts-jest.log
 coverage
