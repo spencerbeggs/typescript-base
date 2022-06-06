@@ -1,3 +1,15 @@
 {
-	"recommendations": ["esbenp.prettier-vscode", "dbaeumer.vscode-eslint", "stevenhansel.vscode-nvm"]
+	"recommendations": [
+		"esbenp.prettier-vscode",
+		"dbaeumer.vscode-eslint",
+		"stevenhansel.vscode-nvm",
+		"amazonwebservices.aws-toolkit-vscode",
+		"ms-azuretools.vscode-docker",
+		"stylelint.vscode-stylelint",
+		"davidanson.vscode-markdownlint",
+		"ms-vscode.js-debug-nightly",
+		"visualstudioexptteam.vscodeintellicode",
+		"eamodio.gitlens",
+		"redhat.vscode-yaml"
+	]
 }
