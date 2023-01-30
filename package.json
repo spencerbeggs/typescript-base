@@ -21,7 +21,7 @@
 		"test": "yarn node --no-warnings --loader ts-node/esm --experimental-vm-modules --experimental-specifier-resolution=node $(yarn bin jest)"
 	},
 	"devDependencies": {
-		"@jest/globals": "^28.1.0",
+		"@jest/globals": "^29.4.1",
 		"@jest/types": "^28.1.0",
 		"@types/fs-extra": "^9.0.13",
 		"@types/jest": "^28.1.1",
